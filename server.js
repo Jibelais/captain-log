@@ -18,6 +18,15 @@ db.on("error", (err) => console.log(err.message))
 db.on("connected", () => console.log("mongo connected"))
 db.on("disconnected", () => console.log("mongo disconnected"))
 
+
+
+// Index route
+app.get('/logs', (req, res)=>{
+   Logs.find({}, (err, allLogs)=>{
+    res.render('index.ejs', {logs:allLogs})
+   })
+})
+
 // New route
 app.get('/logs/new', (req, res)=>{
     res.render('new.ejs')

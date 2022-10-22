@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs')%>
+</head>
+<body>
+    <nav>
+        <a href="/logs/new">Add a New Log</a>
+    </nav>
+    <h1>Captain's Logs</h1>
+    <ul>
+        <% logs.forEach(log => { %>
+        <li>
+          <a href="/logs/<%=log._id%>"><%=log.title; %>, <%= log.author%></a>
+          <form action="/logs/<%=log._id%>?_method=DELETE" method="post">
+            <input type="submit" value="Delete" />
+          </form>
+          <a href="/logs/<%=log._id%>/edit">Edit</a>
+        </li>
+        <% }) %>
+      </ul>
+  </body>
